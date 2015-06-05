@@ -20,12 +20,13 @@
             var formData = $('#property input:first').val()
             var listOfEmails = formData.split(' ');
             var i;
+            var chartEvent = 'Viewed report';
             var chartData = {};
             
             /* Make API Request for emails */
             var promises = [];
             var params = {
-                event: 'Viewed report',
+                event: chartEvent,
                 from: moment().subtract(150, 'days'),
                 to: moment(),
                 type: 'general',
@@ -42,12 +43,21 @@
           
             }
             Promise.all(promises).then(function(datums){
-                /* Format data and graph table */  
+                /* Format data */  
                 
                 _.each(datums, function(datum){
-                    console.log(datum.values());
+                    chartdata[listOfemails[datums.indexOf(datum)]] = datum[chartEvent]
+                    
                 });
-            })
+            }).then(function(){
+              /* Graph Table */
+               $('<div></div>').appendTo('body').MPTable({
+                    data: chartData,
+                    showPercentages: false,
+                    firstColHeader: 'Email'
+                });
+              
+            });
             
         })
         
