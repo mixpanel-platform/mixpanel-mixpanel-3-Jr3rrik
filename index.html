@@ -19,11 +19,10 @@
             e.preventDefault();
             var formData = $('#property input:first').val()
             var listOfEmails = formData.split(' ');
-            
+            var i;
             
             /* Make API Request for emails */
             var promises = [];
-            
             var params = {
                 event: ['Viewed report'],
                 from: moment().subtract(150, 'days'),
@@ -34,7 +33,7 @@
                 where: '' 
             }
             
-            for (var i; i < listOfEmails.length; i++){
+            for (i = 0; i < listOfEmails.length; i++){
                 /* change params to include email */ 
                 params.where = 'properties["$email"] == ' + listOfEmails[i];
                 console.log(params);
