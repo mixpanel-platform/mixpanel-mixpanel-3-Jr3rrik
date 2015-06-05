@@ -24,7 +24,7 @@
             /* Make API Request for emails */
             var promises = [];
             var params = {
-                event: ['Viewed report'],
+                event: 'Viewed report',
                 from: moment().subtract(150, 'days'),
                 to: moment(),
                 limit: 10000,
