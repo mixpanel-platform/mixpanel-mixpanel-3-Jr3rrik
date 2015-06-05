@@ -35,7 +35,7 @@
             
             for (i = 0; i < listOfEmails.length; i++){
                 /* change params to include email */ 
-                params.where = 'properties["$email"] == ' + listOfEmails[i];
+                params.where = 'listOfEmails[i] in string(properties["$email"])' + ;
                 console.log(params);
                 var segQuery = MP.api.segment('api/2.0/segmentation', params).done(function(data){console.log(data)});
                 promises.push(segQuery); 
