@@ -40,7 +40,7 @@
                 var segQuery = MP.api.segment('api/2.0/segmentation', params).done(function(data){console.log(data)});
                 promises.push(segQuery); 
             }
-            Promises.all(promises).then(function(datums){
+            Promise.all(promises).then(function(datums){
                 /* Format data and graph table */  
             })
             
