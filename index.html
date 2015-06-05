@@ -16,6 +16,7 @@
       MP.api.ready(function() {
         /* pull values out of form */
          $('#property').submit(function(e) {
+            $('$chart').remove();
             e.preventDefault();
             var formData = $('#property input:first').val()
             var listOfEmails = formData.split(' ');
@@ -27,7 +28,7 @@
             var promises = [];
             var params = {
                 event: chartEvent,
-                from: moment().subtract(90, 'days'),
+                from: moment().subtract(150, 'days'),
                 to: moment(),
                 type: 'general',
                 unit: 'day',
@@ -55,7 +56,7 @@
             }).then(function(){
               /* Graph Table */
                console.log(chartData)
-               $('<div></div>').appendTo('body').MPTable({
+               $('<div id="chart"></div>').appendTo('body').MPTable({
                     data: chartData,
                     showPercentages: false,
                     firstColHeader: 'Email'
