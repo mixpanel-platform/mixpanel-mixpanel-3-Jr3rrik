@@ -15,9 +15,9 @@
     <script>
       MP.api.ready(function() {
         /* pull values out of form */
-        $('#property').click(function(event){
-            event.preventDefault();
-            var formData = $('#property').val()
+         $('#property').submit(function(e) {
+            e.preventDefault();
+            var formData = $('#property input:first').val()
             console.log(formData);
         })
         
