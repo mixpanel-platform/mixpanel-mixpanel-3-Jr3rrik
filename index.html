@@ -20,6 +20,7 @@
             var formData = $('#property input:first').val()
             var listOfEmails = formData.split(' ');
             var i;
+            var chartData = {};
             
             /* Make API Request for emails */
             var promises = [];
@@ -42,7 +43,10 @@
             }
             Promise.all(promises).then(function(datums){
                 /* Format data and graph table */  
-                console.log(datums)
+                
+                _.each(datums, function(datum){
+                  console.log(datum.values()
+                });
             })
             
         })
