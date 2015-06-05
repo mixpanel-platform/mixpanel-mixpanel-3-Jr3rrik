@@ -36,7 +36,7 @@
               
                 /* change params to include email */ 
                 params.where = '"' + listOfEmails[i] + '"' + ' in string(properties["Email"])';
-                var segQuery = MP.api.segment('api/2.0/segmentation', params).done(function(data){console.log(data)});
+                var segQuery = MP.api.segment('api/2.0/segmentation', params);
                 promises.push(segQuery); 
           
             }
