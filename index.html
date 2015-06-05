@@ -49,7 +49,7 @@
                     /* sum over the values in the response */
                     
                     var sum = _.reduce(_.values(datum.values()[chartEvent]), function(memo, num){ return memo + num; }, 0);
-                    chartData[listOfEmails[datums.indexOf(datum)]] = {'# of visits': sum}
+                    chartData[listOfEmails[datums.indexOf(datum)]] = {'# of visits in the last 6 months': sum}
                     
                 });
             }).then(function(){
