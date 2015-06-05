@@ -18,21 +18,31 @@
          $('#property').submit(function(e) {
             e.preventDefault();
             var formData = $('#property input:first').val()
-            console.log(formData);
-            console.log(formData.split(' '));
+            var listOfEmails = formData.split(' ');
+            
+            
             /* Make API Request for emails */
             var promises = [];
+            
             var params = {
+                event: ['Viewed report'],
                 from: moment().subtract(150, 'days'),
                 to: moment(),
                 limit: 10000,
                 type: 'general',
                 unit: 'day',
-                
-                where: 'properties["$email"] ==' 
-              
-              
+                where: '' 
             }
+            
+            for (var i; i < listOfEmails.length; i++){
+                /* change params to include email */ 
+                params.where = 'properties["$email"] == ' + listOfEmails[i];
+                var segQuery = MP.api.segment('api/2.0/segmentation', params).done(function(data){console.log(data)});
+                promises.push(segQuery); 
+            }
+            Promises.all(promises).then(function(datums){
+                /* Format data and graph table */  
+            })
             
         })
         
