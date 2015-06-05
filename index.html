@@ -16,7 +16,7 @@
       MP.api.ready(function() {
         /* pull values out of form */
          $('#property').submit(function(e) {
-            $('$chart').remove();
+            $('#lgr-chart').remove();
             e.preventDefault();
             var formData = $('#property input:first').val()
             var listOfEmails = formData.split(' ');
@@ -56,7 +56,7 @@
             }).then(function(){
               /* Graph Table */
                console.log(chartData)
-               $('<div id="chart"></div>').appendTo('body').MPTable({
+               $('<div id="lgr-chart"></div>').appendTo('body').MPTable({
                     data: chartData,
                     showPercentages: false,
                     firstColHeader: 'Email'
