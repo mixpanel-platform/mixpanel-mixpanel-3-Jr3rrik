@@ -19,6 +19,21 @@
             e.preventDefault();
             var formData = $('#property input:first').val()
             console.log(formData);
+            console.log(formData.split(' '));
+            /* Make API Request for emails */
+            var promises = [];
+            var params = {
+                from: moment().subtract(150, 'days')m
+                to: moment(),
+                limit: 10000,
+                type: 'general',
+                unit: 'day',
+                
+                where: 'properties["$email"] == 
+              
+              
+            }
+            
         })
         
       });
